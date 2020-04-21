@@ -23,7 +23,7 @@ router.post("/", (req, res, next) => {
         articles.forEach((a) => {
           if (a.date.toDateString().split(" ")[0] == day) arr.push(a);
         });
-        res.render("index", { title: "Filter", articles: arr });
+        res.render("index", { title: "News Feed", articles: arr });
       }
     });
   }
