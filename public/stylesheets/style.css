@@ -1,0 +1,42 @@
+#reg-form-group {
+  width: 20%;
+}
+
+#bodytextarea {
+  width: 1110px;
+  height: 150px;
+}
+
+#newsfeed {
+  margin-top: -3px;
+  margin-left: 8px;
+}
+
+#form-filter {
+  width: 30%;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn.btn-primary.search {
+  margin-left: 10px;
+}
+
+.navbar.navbar-expand-lg.navbar-light.bg-light {
+  font-weight: 500;
+}
+
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success_msg {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}

@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    a.btn.btn-primary(href='/' role='button') Back
+    br
+    br
+    h1= article.title
+    h5 #{article.date.toDateString()}
+    h5 Written by: #{article.author}
+    br
+    p= article.body
+    if user
+        a.btn.btn-outline-secondary(href='/article/edit/'+article._id type='button') Edit
+        a.btn.btn-outline-danger.delete-article(href='',data-id=article._id, type='button', style='margin-left: 10px;') Delete

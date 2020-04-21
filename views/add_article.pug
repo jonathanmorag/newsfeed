@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  a.btn.btn-primary(href='/' role='button') Back
+  br
+  br
+  h1 Add Article
+  form(method='POST', action='/article/add')
+    #form-group
+      label Title:
+      input.form-control(name='title', type='text')
+    #form-group
+      label Category:
+      input.form-control(name='category', type='text')
+    #form-group
+      label Body:
+      textarea.form-control(name='body' id='bodytextarea')
+    br
+    input.btn.btn-primary(type='submit', value='Submit')

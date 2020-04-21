@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1 Trending News
+  if user
+    a.btn.btn-primary(href='/article/add', role='button') Add Article
+    br
+  form(method='POST', action='/')
+    #form-filter
+      label Filter by day:
+      .flex
+        div
+          input.form-control(name='filter', type='text')
+        div
+          input.btn.btn-primary.search(type='submit', value='Search')
+  ul.list-group
+    br
+    each article, i in articles
+      li.list-group-item
+        h6 #{article.date.toDateString()}
+        h2
+          a(href="/article/"+article._id)= article.title
+        br
+        p #{article.body.substring(0,800)}...
+        a.btn.btn-outline-info(href='/article/'+article._id type='button') Read More

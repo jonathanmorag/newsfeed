@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  a.btn.btn-primary(href='/article/'+article._id role='button') Back
+  br
+  br
+  h1 #{title}
+  form(method='POST', action='/article/edit/'+article._id)
+    #form-group
+      label Title:
+      input.form-control(name='title', type='text', value=article.title)
+    #form-group
+      label Category:
+      input.form-control(name='category', type='text', value=article.category)
+    #form-group
+      label Author:
+      input.form-control(name='author', type='text',value=article.author)
+    #form-group
+      label Body:
+      textarea.form-control(name='body' id='bodytextarea')= article.body
+    br
+    input.btn.btn-primary(type='submit', value='Submit')
