@@ -13,17 +13,15 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   var day = req.body.filter;
-  if (!day) {
-    res.redirect("/");
-  } else {
+  if (!day) res.redirect("/");
+  else {
     Article.find({}, (err, articles) => {
       if (err) console.log(err);
       else {
-        var arr = [];
-        articles.forEach((a) => {
-          if (a.date.toDateString().split(" ")[0] == day) arr.push(a);
-        });
-        res.render("index", { title: "News Feed", articles: arr });
+        articles = articles.filter(
+          (a) => a.date.toDateString().split(" ")[0] == day
+        );
+        res.render("index", { title: "News Feed", articles });
       }
     });
   }
