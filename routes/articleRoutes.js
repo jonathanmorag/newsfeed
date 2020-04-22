@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-const { check, validationResult } = require("express-validator");
 var Article = require("../models/article");
 
 // GET Add Article
@@ -52,10 +51,8 @@ router.post("/add", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Article.findById(req.params.id, (err, article) => {
-    res.render("article", {
-      title: article.title,
-      article,
-    });
+    if (!article) res.render("article", { article });
+    else res.render("article", { title: article.title, article });
   });
 });
 

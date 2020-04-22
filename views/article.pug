@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    a.btn.btn-primary(href='/' role='button') Back
+    a.btn.btn-secondary(href='/' role='button') Back
     br
     br
     h1= article.title
@@ -11,4 +11,4 @@ block content
     p= article.body
     if user
         a.btn.btn-outline-secondary(href='/article/edit/'+article._id type='button') Edit
-        a.btn.btn-outline-danger.delete-article(href='',data-id=article._id, type='button', style='margin-left: 10px;') Delete
+        a.btn.btn-outline-danger.delete-article(href='',data-id=article._id, type='button', style='margin-left: 10px;', onclick="return confirm('Are you sure you want to delete this item?');") Delete

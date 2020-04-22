@@ -18,7 +18,7 @@ block content
         option(value='Thu') Thursday
         option(value='Fri') Friday
         option(value='Sat') Saturday
-        input.btn.btn-primary.search(type='submit', value='Search')
+        input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
 
   ul.list-group
     br
@@ -28,5 +28,8 @@ block content
         h2
           a(href="/article/"+article._id)= article.title
         br
-        p #{article.body.substring(0,800)}...
-        a.btn.btn-outline-info(href='/article/'+article._id type='button') Read More
+        if(article.body.length > 800)
+          p #{article.body.substring(0,800)}...
+          a.btn.btn-outline-info(href='/article/'+article._id type='button') Read More
+        else
+          p=article.body
