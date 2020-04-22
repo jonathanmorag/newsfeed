@@ -8,7 +8,7 @@ var User = require("../models/user");
 // Register Form
 
 router.get("/register", (req, res) => {
-  res.render("register");
+  res.render("register", { title: "Register" });
 });
 
 router.post("/register", (req, res, done) => {
@@ -29,10 +29,10 @@ router.post("/register", (req, res, done) => {
       };
       if (!errors) errors = [];
       errors.push(e);
-      res.render("register", { errors });
+      res.render("register", { title: "Register", errors });
     } else {
       if (errors) {
-        res.render("register", { errors });
+        res.render("register", { title: "Register", errors });
       } else {
         let newUser = new User({
           username,
@@ -59,7 +59,7 @@ router.post("/register", (req, res, done) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { title: "Login" });
 });
 
 router.post("/login", (req, res, next) => {

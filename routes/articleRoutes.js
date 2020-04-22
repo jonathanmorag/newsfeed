@@ -53,6 +53,7 @@ router.post("/add", (req, res) => {
 router.get("/:id", (req, res) => {
   Article.findById(req.params.id, (err, article) => {
     res.render("article", {
+      title: article.title,
       article,
     });
   });

@@ -9,11 +9,17 @@ block content
     #form-filter
       br
       label Filter by day:
-      .flex
-        div
-          input.form-control(name='filter', type='text')
-        div
-          input.btn.btn-primary.search(type='submit', value='Search')
+      select(class='selectname' name='selectname')
+        option(value='all') Choose a day
+        option(value='Sun') Sunday
+        option(value='Mon') Monday
+        option(value='Tue') Tuesday
+        option(value='Wed') Wednesday
+        option(value='Thu') Thursday
+        option(value='Fri') Friday
+        option(value='Sat') Saturday
+        input.btn.btn-primary.search(type='submit', value='Search')
+
   ul.list-group
     br
     each article, i in articles

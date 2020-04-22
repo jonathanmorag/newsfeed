@@ -12,13 +12,8 @@
   margin-left: 8px;
 }
 
-#form-filter {
-  width: 30%;
-}
-
-.flex {
-  display: flex;
-  flex-direction: row;
+.selectname {
+  margin: 7px;
 }
 
 .btn.btn-primary.search {

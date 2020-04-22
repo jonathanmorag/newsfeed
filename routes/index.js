@@ -12,9 +12,11 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  var day = req.body.filter;
-  if (!day) res.redirect("/");
-  else {
+  var day = req.body.selectname;
+  if (!day || day == "all") {
+    res.redirect("/");
+  } else {
+    day = day.substring(0, 3);
     Article.find({}, (err, articles) => {
       if (err) console.log(err);
       else {
