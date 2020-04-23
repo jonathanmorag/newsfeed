@@ -1,35 +1,47 @@
 extends layout
 
 block content
-  h1 Trending News
-  if user
-    a.btn.btn-primary(href='/article/add', role='button') Add Article
-    br
-  form(method='POST', action='/')
-    #form-filter
-      br
-      label Filter by day:
-      select(class='selectname' name='selectname')
-        option(value='all') Choose a day
-        option(value='Sun') Sunday
-        option(value='Mon') Monday
-        option(value='Tue') Tuesday
-        option(value='Wed') Wednesday
-        option(value='Thu') Thursday
-        option(value='Fri') Friday
-        option(value='Sat') Saturday
-        input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
+    // Page Content
+    .container
+      // Heading Row
+      .row.align-items-center.my-5
+        .col-lg-7
+          img.img-fluid.rounded.mb-4.mb-lg-0(src='https://dehayf5mhw1h7.cloudfront.net/wp-content/uploads/sites/1075/2018/12/30171909/breaking-news.jpg', alt='')
+        // /.col-lg-8
+        .col-lg-5
+          h1.font-weight-light Redesigned classrooms and changed offices could see end to lockdown
+          p
+            | Redesigned classrooms and changed working practices in offices could offer an exit from coronavirus lockdown measures, Scottish First Minister Nicola Sturgeon has said.
+          a.btn.btn-primary(href='/article/5ea1960933c356072c8a52eb') Read More
+        // /.col-md-4
+        // /.row
 
-  ul.list-group
-    br
-    each article, i in articles
-      li.list-group-item
-        h6 #{article.date.toDateString()}
-        h2
-          a(href="/article/"+article._id)= article.title
-        br
-        if(article.body.length > 800)
-          p #{article.body.substring(0,800)}...
-          a.btn.btn-outline-info(href='/article/'+article._id type='button') Read More
-        else
-          p=article.body
+      form(method='POST', action='/')
+        #form-filter
+          br
+          label Filter by day:
+          select(class='selectname' name='selectname')
+            option(value='all') Choose a day
+            option(value='Sun') Sunday
+            option(value='Mon') Monday
+            option(value='Tue') Tuesday
+            option(value='Wed') Wednesday
+            option(value='Thu') Thursday
+            option(value='Fri') Friday
+            option(value='Sat') Saturday
+            input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
+      br
+      .row
+        each article, i in articles
+          .col-md-4.mb-5
+            .card.h-100
+              .card-body
+                h2.card-title= article.title
+                h6 #{article.date.toDateString()}
+                if(article.body.length > 200)
+                  p.card-text #{article.body.substring(0,200)}...
+                else
+                  p.card-text=article.body
+              .card-footer
+                a.btn.btn-primary.btn-sm(href='/article/'+article._id) Read More
+    
