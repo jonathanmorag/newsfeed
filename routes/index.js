@@ -29,4 +29,20 @@ router.post("/", (req, res, next) => {
   }
 });
 
+router.post("/category", (req, res, next) => {
+  var category = req.body.selectname;
+  console.log(req.body);
+  if (!category || category == "all") {
+    res.redirect("/");
+  } else {
+    Article.find({}, (err, articles) => {
+      if (err) console.log(err);
+      else {
+        articles = articles.filter((a) => a.category == category);
+        res.render("index", { title: "News Feed", articles });
+      }
+    });
+  }
+});
+
 module.exports = router;

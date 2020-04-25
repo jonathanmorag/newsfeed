@@ -30,6 +30,16 @@ block content
             option(value='Fri') Friday
             option(value='Sat') Saturday
             input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
+
+      form(method='POST', action='/category')
+        #form-filter
+          label Filter by category:
+          select(class='selectname' name='selectname')
+            option(value='all') Choose a category...
+            option(value='Demo') Demo
+            option(value='Lorem Ipsum') Lorem Ipsum
+            option(value='Worldwide') Worldwide
+            input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
       br
       .row
         each article, i in articles
