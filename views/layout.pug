@@ -9,13 +9,14 @@ html(lang='en')
     // Bootstrap core CSS
     link(href='/bower_components/bootstrap/dist/css/bootstrap.css', rel='stylesheet')
     // Custom styles for this template
-    link(href='css/small-business.css', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     // Navigation
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
       .container
-        a.navbar-brand(href='/') News Feed
+        a.navbar-brand(href='/')
+          img.d-inline-block.align-top(src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Circle-icons-news.svg/768px-Circle-icons-news.svg.png', width='30', height='30', alt='')
+          |      News Feed
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
         #navbarResponsive.collapse.navbar-collapse
@@ -34,7 +35,6 @@ html(lang='en')
                 a.nav-link(href='/user/register') Register
               li.nav-item
                 a.nav-link(href='/user/login') Login
-            script(src='/bower_components/bootstrap/dist/js/bootstrap.bundle.min.js')
     br
     .container
       br
@@ -49,4 +49,5 @@ html(lang='en')
       footer
         p Copyright © 2020
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+  script(src='/bower_components/bootstrap/dist/js/bootstrap.bundle.min.js')
   script(src='/javascripts/main.js')
