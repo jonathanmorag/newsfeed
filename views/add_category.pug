@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    form.form-inline(method='POST', action='/add_category')
+        .form-group.mb-2
+            label.sr-only(for='staticCategory') Category
+            input#staticCategory.form-control-plaintext(type='text', value='Add Category')
+        .form-group.mx-sm-3.mb-2
+            label.sr-only(for='inputCategory') InputCategory
+            input#inputCategory.form-control(name='category' type='text')
+        button.btn.btn-primary.mb-2(type='submit') Submit

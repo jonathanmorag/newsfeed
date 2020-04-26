@@ -3,13 +3,15 @@ var router = express.Router();
 
 var Article = require("../models/article");
 
-/* GET home page. */
+/* GET Home page. */
 router.get("/", (req, res, next) => {
   Article.find({}, (err, articles) => {
     if (err) console.log(err);
     else res.render("index", { title: "News Feed", articles });
   });
 });
+
+// Filter by day
 
 router.post("/", (req, res, next) => {
   var day = req.body.selectname;
@@ -23,11 +25,14 @@ router.post("/", (req, res, next) => {
         articles = articles.filter(
           (a) => a.date.toDateString().split(" ")[0] == day
         );
-        res.render("index", { title: "News Feed", articles });
+        let user = req.user;
+        res.render("index", { title: "News Feed", articles, user });
       }
     });
   }
 });
+
+// Filter by category
 
 router.post("/category", (req, res, next) => {
   var category = req.body.selectname;
@@ -39,10 +44,25 @@ router.post("/category", (req, res, next) => {
       if (err) console.log(err);
       else {
         articles = articles.filter((a) => a.category == category);
-        res.render("index", { title: "News Feed", articles });
+        let user = req.user;
+        res.render("index", { title: "News Feed", articles, user });
       }
     });
   }
+});
+
+// GET Add Category
+
+router.get("/add_category", (req, res, next) => {
+  let user = req.user;
+  res.render("add_category", { title: "Add Category", user });
+});
+
+// POST Add Category
+
+router.post("/add_category", (req, res, next) => {
+  var category = req.body.category;
+  res.redirect("/");
 });
 
 module.exports = router;
