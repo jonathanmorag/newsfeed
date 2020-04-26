@@ -3,6 +3,10 @@ var router = express.Router();
 
 var Article = require("../models/article");
 
+if (global.categories == null) {
+  global.categories = [];
+}
+
 /* GET Home page. */
 router.get("/", (req, res, next) => {
   Article.find({}, (err, articles) => {
@@ -61,8 +65,15 @@ router.get("/add_category", (req, res, next) => {
 // POST Add Category
 
 router.post("/add_category", (req, res, next) => {
-  var category = req.body.category;
-  res.redirect("/");
+  Article.find({}, (err, articles) => {
+    if (err) console.log(err);
+    else {
+      var category = req.body.category;
+      categories.push(category);
+      let user = req.user;
+      res.render("index", { title: "News Feed", articles, user, categories });
+    }
+  });
 });
 
 module.exports = router;

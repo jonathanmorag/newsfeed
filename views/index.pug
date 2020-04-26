@@ -34,11 +34,14 @@ block content
       form(method='POST', action='/category')
         #form-filter
           label Filter by category:
-          select(class='selectname' name='selectname')
+          select(class='selectname', name='selectname' id='selectcat')
             option(value='all') Choose a category...
-            option(value='Demo') Demo
-            option(value='Lorem Ipsum') Lorem Ipsum
-            option(value='Worldwide') Worldwide
+            for category in categories
+              option(value=category) #{category}
+            //- option(value='all') Choose a category...
+            //- option(value='Demo') Demo
+            //- option(value='Lorem Ipsum') Lorem Ipsum
+            //- option(value='Worldwide') Worldwide
             input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
       br
       .row
