@@ -1,17 +1,20 @@
 var express = require("express");
 var router = express.Router();
+var fs = require("fs");
 
 var Article = require("../models/article");
 
-if (global.categories == null) {
-  global.categories = [];
-}
-
 /* GET Home page. */
-router.get("/", (req, res, next) => {
-  Article.find({}, (err, articles) => {
+router.get("/", async (req, res, next) => {
+  Article.find({}, async (err, articles) => {
     if (err) console.log(err);
-    else res.render("index", { title: "News Feed", articles });
+    else {
+      fs.readFile("./categories.txt", (err, data) => {
+        if (err) throw err;
+        var categories = data.toString().split("\n");
+        res.render("index", { title: "News Feed", articles, categories });
+      });
+    }
   });
 });
 
@@ -64,14 +67,20 @@ router.get("/add_category", (req, res, next) => {
 
 // POST Add Category
 
-router.post("/add_category", (req, res, next) => {
-  Article.find({}, (err, articles) => {
+router.post("/add_category", async (req, res, next) => {
+  Article.find({}, async (err, articles) => {
     if (err) console.log(err);
     else {
       var category = req.body.category;
-      categories.push(category);
-      let user = req.user;
-      res.render("index", { title: "News Feed", articles, user, categories });
+      fs.appendFile("./categories.txt", "\n" + category, (err) => {
+        if (err) throw err;
+        var categories = fs
+          .readFileSync("./categories.txt")
+          .toString()
+          .split("\n");
+        let user = req.user;
+        res.render("index", { title: "News Feed", articles, user, categories });
+      });
     }
   });
 });
