@@ -5,8 +5,8 @@ var fs = require("fs");
 var Article = require("../models/article");
 
 /* GET Home page. */
-router.get("/", async (req, res, next) => {
-  Article.find({}, async (err, articles) => {
+router.get("/", (req, res, next) => {
+  Article.find({}, (err, articles) => {
     if (err) console.log(err);
     else {
       fs.readFile("./categories.txt", (err, data) => {
@@ -33,7 +33,16 @@ router.post("/", (req, res, next) => {
           (a) => a.date.toDateString().split(" ")[0] == day
         );
         let user = req.user;
-        res.render("index", { title: "News Feed", articles, user });
+        fs.readFile("./categories.txt", (err, data) => {
+          if (err) throw err;
+          var categories = data.toString().split("\n");
+          res.render("index", {
+            title: "News Feed",
+            articles,
+            user,
+            categories,
+          });
+        });
       }
     });
   }
@@ -43,7 +52,6 @@ router.post("/", (req, res, next) => {
 
 router.post("/category", (req, res, next) => {
   var category = req.body.selectname;
-  console.log(req.body);
   if (!category || category == "all") {
     res.redirect("/");
   } else {
@@ -52,7 +60,16 @@ router.post("/category", (req, res, next) => {
       else {
         articles = articles.filter((a) => a.category == category);
         let user = req.user;
-        res.render("index", { title: "News Feed", articles, user });
+        fs.readFile("./categories.txt", (err, data) => {
+          if (err) throw err;
+          var categories = data.toString().split("\n");
+          res.render("index", {
+            title: "News Feed",
+            articles,
+            user,
+            categories,
+          });
+        });
       }
     });
   }
@@ -67,8 +84,8 @@ router.get("/add_category", (req, res, next) => {
 
 // POST Add Category
 
-router.post("/add_category", async (req, res, next) => {
-  Article.find({}, async (err, articles) => {
+router.post("/add_category", (req, res, next) => {
+  Article.find({}, (err, articles) => {
     if (err) console.log(err);
     else {
       var category = req.body.category;
@@ -79,6 +96,7 @@ router.post("/add_category", async (req, res, next) => {
           .toString()
           .split("\n");
         let user = req.user;
+        req.flash("success", "Category added");
         res.render("index", { title: "News Feed", articles, user, categories });
       });
     }
