@@ -4,16 +4,19 @@ block content
   a.btn.btn-secondary(href='/' role='button') Back
   br
   br
-  h1 Add Article
+  h1.font-weight-light Add Article
   form(method='POST', action='/article/add')
     #form-group
-      label Title:
+      label.font-weight-light Title:
       input.form-control(name='title', type='text')
     #form-group
-      label Category:
+      label.font-weight-light Category:
       input.form-control(name='category', type='text')
     #form-group
-      label Body:
+      label.font-weight-light Image Path:
+      input.form-control(name='image', type='text')
+    #form-group
+      label.font-weight-light Body:
       textarea.form-control(name='body' id='bodytextarea')
     br
     input.btn.btn-primary(type='submit', value='Submit')

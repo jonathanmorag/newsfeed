@@ -30,6 +30,7 @@ router.post("/add", (req, res) => {
     var article = new Article({
       title: obj.title,
       category: obj.category,
+      image: obj.image,
       date: new Date(),
       author: req.user.username,
       body: obj.body,

@@ -6,42 +6,37 @@ block content
       // Heading Row
       .row.align-items-center.my-5
         .col-lg-7
-          img.img-fluid.rounded.mb-4.mb-lg-0(src='https://dehayf5mhw1h7.cloudfront.net/wp-content/uploads/sites/1075/2018/12/30171909/breaking-news.jpg', alt='')
+          img.img-fluid.rounded.mb-4.mb-lg-0(src='https://e3.365dm.com/20/04/2048x1152/skynews-warwick-university_4976950.jpg?bypass-service-worker&20200425173513', alt='')
         // /.col-lg-8
         .col-lg-5
           h1.font-weight-light Redesigned classrooms and changed offices could see end to lockdown
-          p
+          p.font-weight-light
             | Redesigned classrooms and changed working practices in offices could offer an exit from coronavirus lockdown measures, Scottish First Minister Nicola Sturgeon has said.
-          a.btn.btn-primary(href='/article/5ea1960933c356072c8a52eb') Read More
+          a.btn.btn-primary.font-weight-light(href='/article/5ea73cb191d5e4397c0a7495') Read More
         // /.col-md-4
         // /.row
 
       form(method='POST', action='/')
         #form-filter
-          br
-          label Filter by day:
-          select(class='selectname' name='selectname')
-            option(value='all') Choose a day...
-            option(value='Sun') Sunday
-            option(value='Mon') Monday
-            option(value='Tue') Tuesday
-            option(value='Wed') Wednesday
-            option(value='Thu') Thursday
-            option(value='Fri') Friday
-            option(value='Sat') Saturday
+          label.font-weight-light Filter by day:
+          select.font-weight-light(class='selectname' name='selectname')
+            option.font-weight-light(value='all') Choose a day...
+            option.font-weight-light(value='Sun') Sunday
+            option.font-weight-light(value='Mon') Monday
+            option.font-weight-light(value='Tue') Tuesday
+            option.font-weight-light(value='Wed') Wednesday
+            option.font-weight-light(value='Thu') Thursday
+            option.font-weight-light(value='Fri') Friday
+            option.font-weight-light(value='Sat') Saturday
             input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
 
       form(method='POST', action='/category')
         #form-filter
-          label Filter by category:
-          select(class='selectname', name='selectname' id='selectcat')
-            option(value='all') Choose a category...
+          label.font-weight-light Filter by category:
+          select.font-weight-light(class='selectname', name='selectname' id='selectcat')
+            option.font-weight-light(value='all') Choose a category...
             for category in categories
-              option(value=category) #{category}
-            //- option(value='all') Choose a category...
-            //- option(value='Demo') Demo
-            //- option(value='Lorem Ipsum') Lorem Ipsum
-            //- option(value='Worldwide') Worldwide
+              option.font-weight-light(value=category) #{category}
             input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
       br
       .row
@@ -49,12 +44,14 @@ block content
           .col-md-4.mb-5
             .card.h-100
               .card-body
-                h2.card-title= article.title
-                h6 #{article.date.toDateString()}
+                img.img-responsive(src=article.image alt=" ...")
+                p
+                h1.card-title.font-weight-light= article.title
+                h6.font-weight-light #{article.date.toDateString()}
                 if(article.body.length > 200)
-                  p.card-text #{article.body.substring(0,200)}...
+                  p.card-text.font-weight-light #{article.body.substring(0,200)}...
                 else
-                  p.card-text=article.body
+                  p.card-text.font-weight-light=article.body
               .card-footer
-                a.btn.btn-primary.btn-sm(href='/article/'+article._id) Read More
+                a.btn.btn-primary.btn-sm.font-weight-light(href='/article/'+article._id) Read More
     

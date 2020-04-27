@@ -1,13 +1,14 @@
 extends layout
 
 block content
-    a.btn.btn-secondary(href='/' role='button') Back
+    a.btn.btn-secondary.font-weight-light(href='/' role='button') Back
     br
     br
-    h1= article.title
-    h5 #{article.date.toDateString()}
-    h5 #{article.category}
-    h5 Written by: #{article.author}
+    h1.font-weight-light= article.title
+    img.inarticle(src=article.image, alt='')
+    h5.font-weight-light #{article.date.toDateString()}
+    h5.font-weight-light #{article.category}
+    h5.font-weight-light Written by: #{article.author}
     br
     p= article.body
     if user

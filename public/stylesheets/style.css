@@ -25,6 +25,19 @@
   font-weight: 500;
 }
 
+.img-responsive {
+  width: 300px;
+}
+
+.inarticle {
+  width: 850;
+  height: 435px;
+}
+
+h1.card-title.font-weight-light {
+  font-size: 200%;
+}
+
 .alert-error {
   color: #a94442;
   background-color: #f2dede;
