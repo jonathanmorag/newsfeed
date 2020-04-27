@@ -6,7 +6,7 @@ block content
       // Heading Row
       .row.align-items-center.my-5
         .col-lg-7
-          img.img-fluid.rounded.mb-4.mb-lg-0(src='https://e3.365dm.com/20/04/2048x1152/skynews-warwick-university_4976950.jpg?bypass-service-worker&20200425173513', alt='')
+          img.img-fluid.rounded.mb-4.mb-lg-0(src='https://img.mako.co.il/2020/03/19/World_Empty_Street_C2020_4_i.jpg', alt='')
         // /.col-lg-8
         .col-lg-5
           h1.font-weight-light Redesigned classrooms and changed offices could see end to lockdown
@@ -19,7 +19,7 @@ block content
       form(method='POST', action='/')
         #form-filter
           label.font-weight-light Filter by day:
-          select.font-weight-light(class='selectname' name='selectname')
+          select.font-weight-light(class='selectnameday' name='selectname')
             option.font-weight-light(value='all') Choose a day...
             option.font-weight-light(value='Sun') Sunday
             option.font-weight-light(value='Mon') Monday
@@ -28,16 +28,16 @@ block content
             option.font-weight-light(value='Thu') Thursday
             option.font-weight-light(value='Fri') Friday
             option.font-weight-light(value='Sat') Saturday
-            input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
+            input.btn.btn-primary.btn-sm.search.day(type='submit', value='Search')
 
       form(method='POST', action='/category')
         #form-filter
           label.font-weight-light Filter by category:
-          select.font-weight-light(class='selectname', name='selectname' id='selectcat')
+          select.font-weight-light(class='selectnamecat', name='selectname' id='selectcat')
             option.font-weight-light(value='all') Choose a category...
             for category in categories
               option.font-weight-light(value=category) #{category}
-            input.btn.btn-primary.btn-sm.search(type='submit', value='Search')
+            input.btn.btn-primary.btn-sm.search.cat(type='submit', value='Search')
       br
       .row
         each article, i in articles
