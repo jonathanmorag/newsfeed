@@ -91,13 +91,8 @@ router.post("/add_category", (req, res, next) => {
       var category = req.body.category;
       fs.appendFile("./categories.txt", "\n" + category, (err) => {
         if (err) throw err;
-        var categories = fs
-          .readFileSync("./categories.txt")
-          .toString()
-          .split("\n");
-        let user = req.user;
         req.flash("success", "Category added");
-        res.render("index", { title: "News Feed", articles, user, categories });
+        res.redirect("/");
       });
     }
   });
