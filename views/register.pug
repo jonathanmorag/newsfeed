@@ -1,13 +1,41 @@
 extends layout
 
 block content
-  h1 Register
-  form(method='POST', action='/user/register')
-    #reg-form-group
-      label Username:
-      input.form-control(name='username', type='text')
-    #reg-form-group
-      label Password:
-      input.form-control(name='password', type='password')
+  link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', rel='stylesheet')
+  script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    // ---- Include the above in your HEAD tag --------
+  link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.0.8/css/all.css')
+  link(rel='stylesheet', href='/stylesheets/register.css')
+  .container
     br
-    input.btn.btn-primary(type='submit', value='Sign Up')
+    .card.bg-light
+      article.card-body.mx-auto(style='max-width: 400px;')
+        h3.card-title.mt-3.text-center.font-weight-light Create Account
+        p.text-center.font-weight-light Get started with your free account
+        p.font-weight-light
+          a.btn.btn-block.btn-twitter(href='')
+            i.fab.fa-twitter.font-weight-light
+            |    Login via Twitter
+        p.divider-text
+          span.bg-light OR
+        form(method='POST', action='/user/register')
+          .form-group.input-group
+            .input-group-prepend
+              span.input-group-text
+                i.fa.fa-user
+            input.form-control(name='username', placeholder='Username', type='text')
+          // form-group end.//
+          .form-group.input-group
+            .input-group-prepend
+              span.input-group-text
+                i.fa.fa-lock
+            input.form-control(name='password' placeholder='Password', type='password')
+          .form-group
+            button.btn.btn-primary.btn-block.font-weight-light(type='submit')  Create Account  
+          // form-group//
+          p.text-center.font-weight-light
+            | Have an account? 
+            a(href='') Log In
+    // card.//
+    // container end.//
