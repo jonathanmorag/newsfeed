@@ -1,6 +1,8 @@
 # News Feed
 Node.js, Express, MongoDB application - scalable and deployed through AWS Services.
 
+![demo](/demo.gif)
+
 ---
 ## Running Locally
 
