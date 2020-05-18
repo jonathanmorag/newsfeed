@@ -9,7 +9,7 @@ Node.js, Express, MongoDB application - scalable and deployed through AWS Servic
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
 ```sh
-git clone https://github.com/jonathanmorag/newsfeed.git # or clone your own fork
+git clone https://github.com/jonathanmorag/newsfeed.git     # Or clone your own fork
 cd newsfeed
 npm install
 npm start
