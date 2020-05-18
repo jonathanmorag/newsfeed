@@ -22,7 +22,7 @@ router.post("/register", (req, res, done) => {
 
   User.findOne({ username }, (err, user) => {
     if (user) {
-      var e = {
+      const e = {
         param: "username",
         msg: "Username already exists",
         value: req.body.username,
