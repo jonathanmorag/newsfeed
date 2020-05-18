@@ -11,7 +11,11 @@ block content
       input.form-control(name='title', type='text')
     #form-group
       label.font-weight-light Category:
-      input.form-control(name='category', type='text')
+      br
+      select.font-weight-light(class='selectnamecatadd', name='selectname' id='selectcat')
+        option.font-weight-light(value='all') Choose a category...
+        for category in categories
+          option.font-weight-light(value=category) #{category}
     #form-group
       label.font-weight-light Image Path:
       input.form-control(name='image', type='text')

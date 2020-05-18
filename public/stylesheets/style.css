@@ -20,6 +20,12 @@
   margin: 7px;
 }
 
+.selectnamecatadd {
+  margin: 0px;
+  width: 1111px;
+  height: 38px;
+}
+
 .btn.btn-primary.search.cat {
   margin-left: 10px;
   margin-top: -5px;
@@ -57,4 +63,8 @@ h1.card-title.font-weight-light {
   color: #3c763d;
   background-color: #dff0d8;
   border-color: #d6e9c6;
+}
+
+.footer {
+  text-align: center;
 }

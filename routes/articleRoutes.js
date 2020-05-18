@@ -1,20 +1,27 @@
 var express = require("express");
 var router = express.Router();
 var Article = require("../models/article");
+var fs = require("fs");
 
 // GET Add Article
 
 router.get("/add", ensureAuthenticated, (req, res) => {
-  res.render("add_article", {
-    title: "Add Article",
+  fs.readFile("./categories.txt", (err, data) => {
+    if (err) throw err;
+    var categories = data.toString().split("\n");
+    res.render("add_article", {
+      title: "Add Article",
+      categories
+    });
   });
+  
 });
 
 // POST Add Article
 
 router.post("/add", (req, res) => {
   req.checkBody("title", "Title is required").notEmpty();
-  req.checkBody("category", "Category is required").notEmpty();
+  // req.checkBody("category", "Category is required").notEmpty();
   req.checkBody("body", "Body is required").notEmpty();
 
   let errors = req.validationErrors();
@@ -26,10 +33,10 @@ router.post("/add", (req, res) => {
     });
   } else {
     const obj = JSON.parse(JSON.stringify(req.body));
-
+    const category = req.body.selectname;
     var article = new Article({
       title: obj.title,
-      category: obj.category,
+      category: category,
       image: obj.image,
       date: new Date(),
       author: req.user.username,
