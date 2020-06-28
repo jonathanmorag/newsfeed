@@ -69,3 +69,12 @@ h1.card-title.font-weight-light {
 .footer {
   text-align: center;
 }
+
+.pull-right {
+  float: right;
+}
+
+#eye-icon {
+  margin-left: 187px;
+  margin-bottom: 5px;
+}

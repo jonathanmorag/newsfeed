@@ -11,10 +11,9 @@ router.get("/add", ensureAuthenticated, (req, res) => {
     var categories = data.toString().split("\n");
     res.render("add_article", {
       title: "Add Article",
-      categories
+      categories,
     });
   });
-  
 });
 
 // POST Add Article
@@ -60,7 +59,15 @@ router.post("/add", (req, res) => {
 router.get("/:id", (req, res) => {
   Article.findById(req.params.id, (err, article) => {
     if (!article) res.render("article", { article });
-    else res.render("article", { title: article.title, article });
+    else {
+      article.views++;
+      article.save((err) => {
+        if (err) console.log(err);
+        else {
+          res.render("article", { title: article.title, article });
+        }
+      });
+    }
   });
 });
 
