@@ -16,15 +16,14 @@ router.get("/", async (req, res, next) => {
       fs.readFile("./categories.txt", async (err, data) => {
         if (err) throw err;
         var categories = data.toString().split("\n");
-        var temp = await axios.get(url);
-        let formattedTemp = temp.data.main.temp;
-        console.log(formattedTemp);
+        var parsedTemp = await axios.get(url);
+        let temperature = parsedTemp.data.main.temp;
 
         res.render("index", {
           title: "News Feed",
           articles,
           categories,
-          formattedTemp,
+          temperature,
         });
       });
     }
