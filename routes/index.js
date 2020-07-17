@@ -1,18 +1,31 @@
 var express = require("express");
 var router = express.Router();
 var fs = require("fs");
+var axios = require("axios");
 
 var Article = require("../models/article");
 
+const url =
+  "https://kqueq164e0.execute-api.us-east-1.amazonaws.com/default/getWeather";
+
 /* GET Home page. */
-router.get("/", (req, res, next) => {
+router.get("/", async (req, res, next) => {
   Article.find({}, (err, articles) => {
     if (err) console.log(err);
     else {
-      fs.readFile("./categories.txt", (err, data) => {
+      fs.readFile("./categories.txt", async (err, data) => {
         if (err) throw err;
         var categories = data.toString().split("\n");
-        res.render("index", { title: "News Feed", articles, categories });
+        var temp = await axios.get(url);
+        let formattedTemp = temp.data.main.temp;
+        console.log(formattedTemp);
+
+        res.render("index", {
+          title: "News Feed",
+          articles,
+          categories,
+          formattedTemp,
+        });
       });
     }
   });

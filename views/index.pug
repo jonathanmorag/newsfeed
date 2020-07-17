@@ -3,6 +3,13 @@ extends layout
 block content
     // Page Content
     .container
+      // Temperature
+      .temperature
+        img(src='https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png', alt='', style='width:30px; height:30px;')
+        h4.font-weight-light The temperature in Tel-Aviv is: #{formattedTemp}°
+      
+      p.font-weight-light(style='margin-left:40px;') powered by © AWS-Lambda
+
       // Heading Row
       .row.align-items-center.my-5
         .col-lg-7

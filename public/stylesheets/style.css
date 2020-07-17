@@ -78,3 +78,9 @@ h1.card-title.font-weight-light {
   margin-left: 187px;
   margin-bottom: 5px;
 }
+
+.temperature {
+  display: flex;
+  justify-content: space-between;
+  width: 38%;
+}
