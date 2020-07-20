@@ -13,15 +13,10 @@ router.get("/", async (req, res, next) => {
       fs.readFile("./categories.txt", async (err, data) => {
         if (err) throw err;
         var categories = data.toString().split("\n");
-        var rates = await axios.get(
-          "http://dollarapp-env.eba-ynjfpvtw.us-east-1.elasticbeanstalk.com/"
-        );
-        var ratesData = rates.data;
         res.render("index", {
           title: "News Feed",
           articles,
           categories,
-          ratesData,
         });
       });
     }
