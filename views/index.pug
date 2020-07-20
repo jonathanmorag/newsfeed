@@ -7,19 +7,20 @@ block content
       .temperature
         h4.font-weight-light(style='margin-right:6px;') Tel-Aviv
         img(src='https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png', alt='', style='width:30px; height:30px; margin-right: 6px;')
-        h4.font-weight-light #{temperature}°c
+        h4.font-weight-light#temperature
       
       p.font-weight-light(style='margin-left:1px;') powered by © AWS-Lambda
 
-      .coin-rates
-        img.coins(src='https://cdn.onlinewebfonts.com/svg/img_60991.png', alt='', style='width:30px; height:30px; margin-right: 6px;')
-        p.font-weight-light(style='margin-left:1px; margin-right:10px;') #{ratesData.dollarRate}
-        img.coins(src='https://cdn0.iconfinder.com/data/icons/neutro-finance/32/euro-symbol-512.png', alt='', style='width:34px; height:33px; margin-right: 6px; margin-top: -4px;')
-        p.font-weight-light(style='margin-left:1px; margin-right:10px;') #{ratesData.euroRate}
-        img.coins(src='https://cdn1.iconfinder.com/data/icons/business-finance-1-1/128/currency-pound-512.png', alt='', style='width:30px; height:30px; margin-right: 6px;')
-        p.font-weight-light(style='margin-left:1px;') #{ratesData.poundRate}
-      
-      p.font-weight-light(style='margin-left:1px;') powered by © AWS-Elastic Beanstalk
+      if(ratesData)
+        .coin-rates
+          img.coins(src='https://cdn.onlinewebfonts.com/svg/img_60991.png', alt='', style='width:30px; height:30px; margin-right: 6px;')
+          p.font-weight-light(style='margin-left:1px; margin-right:10px;') #{ratesData.dollarRate}
+          img.coins(src='https://cdn0.iconfinder.com/data/icons/neutro-finance/32/euro-symbol-512.png', alt='', style='width:34px; height:33px; margin-right: 6px; margin-top: -4px;')
+          p.font-weight-light(style='margin-left:1px; margin-right:10px;') #{ratesData.euroRate}
+          img.coins(src='https://cdn1.iconfinder.com/data/icons/business-finance-1-1/128/currency-pound-512.png', alt='', style='width:30px; height:30px; margin-right: 6px;')
+          p.font-weight-light(style='margin-left:1px;') #{ratesData.poundRate}
+        
+        p.font-weight-light(style='margin-left:1px;') powered by © AWS-Elastic Beanstalk
 
       // Heading Row
       .row.align-items-center.my-5
@@ -77,5 +78,4 @@ block content
                   svg.bi.bi-eye-fill(id="eye-icon" width='1em', height='1em', viewBox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
                     path(d='M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z')
                     path(fill-rule='evenodd', d='M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z')
-
-    
+    script(src='/javascripts/lambda.js')

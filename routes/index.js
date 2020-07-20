@@ -5,9 +5,6 @@ var axios = require("axios");
 
 var Article = require("../models/article");
 
-const url =
-  "https://kqueq164e0.execute-api.us-east-1.amazonaws.com/default/getWeather";
-
 /* GET Home page. */
 router.get("/", async (req, res, next) => {
   Article.find({}, (err, articles) => {
@@ -16,8 +13,6 @@ router.get("/", async (req, res, next) => {
       fs.readFile("./categories.txt", async (err, data) => {
         if (err) throw err;
         var categories = data.toString().split("\n");
-        var parsedTemp = await axios.get(url);
-        let temperature = parsedTemp.data.main.temp;
         var rates = await axios.get(
           "http://dollarapp-env.eba-ynjfpvtw.us-east-1.elasticbeanstalk.com/"
         );
@@ -26,7 +21,6 @@ router.get("/", async (req, res, next) => {
           title: "News Feed",
           articles,
           categories,
-          temperature,
           ratesData,
         });
       });
