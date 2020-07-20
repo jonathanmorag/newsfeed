@@ -18,12 +18,16 @@ router.get("/", async (req, res, next) => {
         var categories = data.toString().split("\n");
         var parsedTemp = await axios.get(url);
         let temperature = parsedTemp.data.main.temp;
-
+        var rates = await axios.get(
+          "http://dollarapp-env.eba-ynjfpvtw.us-east-1.elasticbeanstalk.com/"
+        );
+        var ratesData = rates.data;
         res.render("index", {
           title: "News Feed",
           articles,
           categories,
           temperature,
+          ratesData,
         });
       });
     }

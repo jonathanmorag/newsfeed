@@ -84,3 +84,13 @@ h1.card-title.font-weight-light {
   justify-content: stretch;
   width: 22%;
 }
+
+.coin-rates {
+  display: flex;
+  justify-content: stretch;
+  width: 22%;
+}
+
+.coins {
+  margin-top: -2px;
+}
